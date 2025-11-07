@@ -1,6 +1,6 @@
 # Windows
 
-<a href="https://github.com/jesusgarcia149/resources-for-developement/tree/Languages">Windows</a>
+<a href="https://github.com/jesusgarcia149/Install-OS-Without-USB/tree/Windows">Windows</a>
 </br>
 
 # Linux
