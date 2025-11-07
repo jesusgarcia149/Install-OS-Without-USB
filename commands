@@ -1,0 +1,23 @@
+# Instalar el gedit
+sudo apt installl gedit -y
+
+# sudo nano /etc/grub.d/40_custom
+sudo gedit /etc/grub.d/40_custom
+
+# Añadir este comando
+menuentry "Instalador Kubuntu 20.04 (Desde Disco)" {
+    set isofile="/home/jesus/boot/10.-Linux-Kubuntu-20.04.5-desktop-amd64.iso"
+    loopback loop $isofile
+    linux (loop)/casper/vmlinuz boot=casper iso-scan/filename=$isofile noprompt noeject
+    initrd (loop)/casper/initrd
+}
+
+# actualizamos el grup
+sudo update-grub
+
+# Mostrar el Menú de GRUB (Corrección)
+GRUB_TIMEOUT_STYLE=menu
+GRUB_TIMEOUT=3
+
+# actualizamos el grup
+sudo update-grub
