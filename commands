@@ -4,10 +4,23 @@ sudo apt installl gedit -y
 # sudo nano /etc/grub.d/40_custom
 sudo gedit /etc/grub.d/40_custom
 
-# Añadir este comando
+# Añadir este comando en caso de que el archivo iso esté en la misma particion
 menuentry "Instalador Kubuntu 20.04 (Desde Disco)" {
     set isofile="/home/jesus/boot/10.-Linux-Kubuntu-20.04.5-desktop-amd64.iso"
     loopback loop $isofile
+    linux (loop)/casper/vmlinuz boot=casper iso-scan/filename=$isofile noprompt noeject
+    initrd (loop)/casper/initrd
+}
+
+# Añadir este comando en caso de que el archivo iso esté en en otro Disco
+menuentry "Instalador Kubuntu 20.04 (Desde OTRO Disco)" {
+    # Define la ruta del archivo ISO DENTRO de esa partición
+    set isofile="/iso/kubuntu-20.04-desktop-amd64.iso"
+
+    # *** CLAVE: Especifica el disco y la partición (ej. (hd1,gpt1)) ***
+    loopback loop (hd1,gpt1)$isofile 
+
+    # Comandos de arranque (los mismos de antes)
     linux (loop)/casper/vmlinuz boot=casper iso-scan/filename=$isofile noprompt noeject
     initrd (loop)/casper/initrd
 }
