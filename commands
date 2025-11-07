@@ -12,12 +12,15 @@ menuentry "Instalador Kubuntu 20.04 (Desde Disco)" {
     initrd (loop)/casper/initrd
 }
 
-# actualizamos el grup
+# actualizamos el grub
 sudo update-grub
+
+#modificamos el grub
+sudo nano /etc/default/grub
 
 # Mostrar el Menú de GRUB (Corrección)
 GRUB_TIMEOUT_STYLE=menu
 GRUB_TIMEOUT=3
 
-# actualizamos el grup
+# actualizamos el grub
 sudo update-grub
